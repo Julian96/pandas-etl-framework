@@ -1,5 +1,6 @@
 import os
 import shutil
+import time
 import pandas as pd
 import pandasql as ps
 import src.PandasETLHelpers.MetaColumnHelpers as mch
@@ -27,6 +28,7 @@ def simulate_runs(run_data_dict):
         shutil.rmtree(current_path)
     for run in run_data_dict:
         meta_column_historization(run_data_dict[run])
+        time.sleep(2)
 
     final_df = scd.read_parquet_df(current_path)
     return final_df
